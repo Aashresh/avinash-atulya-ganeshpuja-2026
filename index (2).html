@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avinash Atulya Ganesh Chaturthi 2026</title>
+<style>
+body{font-family:Arial,sans-serif;background:#FFF7ED;margin:0}
+.header{background:linear-gradient(135deg,#ea580c,#f59e0b,#fde047);color:#fff;padding:28px;text-align:center}
+.logo{background:#fff;color:#65A30D;display:inline-block;padding:12px 20px;border-radius:18px}
+.logo small{display:block;color:#1D4ED8;font-weight:bold}
+.wrap{max-width:700px;margin:auto;padding:18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.card{background:#fff;padding:16px;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+input,select,button{width:100%;padding:12px;border-radius:10px;border:1px solid #ddd;margin-top:8px;box-sizing:border-box}
+button{background:#16A34A;color:#fff;font-weight:bold;border:none}
+.list>div{border:1px solid #eee;border-radius:10px;padding:10px;margin-top:8px}
+.footer{background:#111827;color:#fff;text-align:center;padding:14px;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo"><small>avinash</small><div style="font-size:38px;font-weight:800;">ATULYA</div></div>
+<h2>🪔 श्री गणेश चतुर्थी उत्सव 2026</h2>
+<div>Society Celebration Portal</div>
+</div>
+<div class="wrap">
+<div class="grid">
+<div class="card"><div id="c">₹0</div><small>Collection</small></div>
+<div class="card"><div id="e">₹0</div><small>Expense</small></div>
+<div class="card"><div id="b">₹0</div><small>Balance</small></div>
+</div>
+<div class="card">
+<h3>Collection Entry</h3>
+<input id="flat" placeholder="Flat Number">
+<input id="name" placeholder="Member Name">
+<input id="amt" type="number" placeholder="Amount">
+<button onclick="addCol()">Add Collection</button>
+<div id="cl" class="list"></div>
+</div>
+<div class="card">
+<h3>Expense Entry</h3>
+<select id="cat"><option>Idol</option><option>Pandit Ji</option><option>Samagri</option><option>Fruits</option><option>Sweets</option><option>Decoration</option><option>Others</option></select>
+<input id="ea" type="number" placeholder="Amount">
+<button onclick="addExp()" style="background:#DC2626">Add Expense</button>
+<div id="el" class="list"></div>
+</div>
+<div class="card">
+<h3>10-Day Aarti Schedule</h3>
+<select id="day"></select>
+<select id="slot"><option>Morning</option><option>Evening</option></select>
+<input id="af" placeholder="Flat Number">
+<button onclick="save()" style="background:#F59E0B">Save Slot</button>
+<div id="sl" class="list"></div>
+</div>
+</div>
+<div class="footer">Designed by <b>D404</b></div>
+<script>
+let cols=[], exps=[], sch=[];
+for(let i=1;i<=10;i++){sch.push({day:i,Morning:"",Evening:""});day.innerHTML+=`<option>${i}</option>`;}
+function ref(){
+let tc=cols.reduce((a,b)=>a+b.a,0), te=exps.reduce((a,b)=>a+b.a,0);
+c.innerText='₹'+tc; e.innerText='₹'+te; b.innerText='₹'+(tc-te);
+cl.innerHTML=cols.map(x=>`<div><b>${x.f}</b> ${x.n}<span style="float:right">₹${x.a}</span></div>`).join('');
+el.innerHTML=exps.map(x=>`<div>${x.c}<span style="float:right">₹${x.a}</span></div>`).join('');
+sl.innerHTML=sch.map(x=>`<div><b>Day ${x.day}</b><br>🌞 ${x.Morning||'-'}<br>🌙 ${x.Evening||'-'}</div>`).join('');
+}
+function addCol(){if(!flat.value||!name.value||!amt.value)return; cols.unshift({f:flat.value,n:name.value,a:+amt.value}); flat.value=name.value=amt.value=''; ref();}
+function addExp(){if(!ea.value)return; exps.unshift({c:cat.value,a:+ea.value}); ea.value=''; ref();}
+function save(){let d=sch[day.value-1]; d[slot.value]=af.value; af.value=''; ref();}
+ref();
+</script>
+</body>
+</html>
